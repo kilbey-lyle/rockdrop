@@ -23,6 +23,7 @@ As a user I would to...
 - search for a specific product so I do not have to look at all products if i am searching for something specific
 - to get confirmation emails so I know my order was successful and have a copy of all order information
 - be able to check out without having a register account so I can make a one time purchase
+- have a quick add button so I can add an item to my basket without having to leave the all products page 
 
 As a site owner I would like to...
 - be able to add products to my inventory so users can view them
@@ -36,10 +37,37 @@ As a site owner I would like to...
 ## Colours
 The colour scheme for Rock Drops will be as follows:
 ![Rock Drops Colour Theme](readme_assets/AdobeColor-Rock%20Drop.jpeg)
-
+This colour scheme was chosen to create a calm and neutral pallet which reflects the up raw metal and natural stone materials used through Rock Drops' products. 
 
 ## Screens
-This section will detail what these screen contain.
+This section will detail what these screens contain.
+#### Home page
+This page will contain a background image and two buttons. A 'shop now' button which will link to the products page filtered to all products and a 'get notified about next drop' button which will direct the user to the sign up page. 
+
+#### Products page
+This page will be linked to by multiple button and nav elements around Drop Rocks. It will be the center of product browsing. The products contained with the products page will vary based on the filters applied. The filter applied is determined by the route to the page the user takes. 
+
+#### Product details
+This page will show a single product and its details. 
+
+#### Sign in view
+This page will contain a sign in form, where the user can enter their email and password. When sign is successful this page will redirect to the all products view.
+
+#### Sign up view
+This will page can be used by users to create a profile for Drop rocks. after a user successfully sign up they will redirect to the all products view.
+
+#### Edit product view
+This page can only be accessed by admin users and will allow them to edit existing products. Once an edit is successfully saved they will be redirected to the product details view of product details view for that product. 
+
+#### Add product view
+Similar to the edit product, the add product view will allows admin users to add brand new products. Once successfully added the user will be redirected to the product details view of product details view for that product.  
+
+#### Manage all drops view 
+This page is only accessible by admin users and provides an overview of all drops planned and complete. Clicking on the name of a individual drop will open the dorp details page. 
+
+#### Manage drop view
+This page contains all details about a single drop. It allows admin users to add product to future drops or view details, like products included within a drop.
+
 
 ## Wireframes
 
