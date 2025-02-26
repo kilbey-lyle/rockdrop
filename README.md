@@ -72,9 +72,32 @@ This page contains all details about a single drop. It allows admin users to add
 This page will contain a form which allows you to create a new drop. When successful created opens on to the mange drop view.
 
 ## Wireframes
+#### Home page
+![home page wireframe](readme_assets/Rock%20Drops%20-%20home%20page.png)
 
-## Navigation Elements
-The navigation elements present to a user will change depending on whether they are signed in. The below lists explain what navigation elements will be present based on the current user's sign in status. 
+#### Products page
+![products page wireframe](readme_assets/Rock%20drops%20-%20Products%20view.png)
+
+#### Product details
+![product details page wireframe](readme_assets/product%20details.png)
+
+#### Sign in view
+![sign in page wireframe](readme_assets/sign%20in.png)
+
+#### Sign up view
+![sign up page wireframe](readme_assets/Create%20an%20account.png)
+
+#### Edit/Add product view
+![edit product page wireframe](readme_assets/EditAdd.png)
+
+#### Manage all drops view 
+![manage all drops page wireframe](readme_assets/manage%20drops.png)
+
+#### Manage drop view
+![manage drop page wireframe](readme_assets/manage%20drop.png)
+
+#### Create drop view
+![create drop view wireframe](readme_assets/create%20new%20drop.png)
 
 # Data Schema
 This section will outline the databases available within this project.
