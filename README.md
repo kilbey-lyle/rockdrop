@@ -68,6 +68,8 @@ This page is only accessible by admin users and provides an overview of all drop
 #### Manage drop view
 This page contains all details about a single drop. It allows admin users to add product to future drops or view details, like products included within a drop.
 
+#### Create drop view
+This page will contain a form which allows you to create a new drop. When successful created opens on to the mange drop view.
 
 ## Wireframes
 
