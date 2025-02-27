@@ -3,8 +3,8 @@ html {
 }
 
 body {
-    background-color: #F2EFE9;
-    background-size: cover;
+    background: url('/media/welcome_image.jpg') no-repeat center center fixed;
+	background-size: cover;
     height: calc(100vh - 164px);
     font-family: "Roboto", serif;
 }
@@ -19,7 +19,7 @@ body {
     background-color: #97BF5A;
 }
 
-.bg-white {
+.bg-off-white {
     background-color: #F2EFE9;
 }
 
@@ -55,12 +55,30 @@ body {
 
 /*------ Header ------*/
 
+/* .container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+} */
+
 #search-bar {
-    border-radius: 5px;
+    border: 2px solid #F2EFE9;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 #search-btn {
     border: 2px solid #F2EFE9;
     border-left: none;
     border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.main-nav-link {
+    text-decoration: none;
+}
+
+/*------ welcome page ------*/
+
+#welcome-message {
+    border-radius: 5px;
 }

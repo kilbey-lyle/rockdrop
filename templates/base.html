@@ -7,7 +7,7 @@
     {% block meta %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
     {% block extra_meta %}
@@ -44,14 +44,14 @@
 </head>
 
 <body>
-    <header class="container-fluid fixed-top py-3 bg-dark-green tx-white">
+    <header class="container-fluid fixed-top pt-3 bg-dark-green tx-white">
         <div class="row">
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+            <div class="col-12 col-lg-4 my-auto py-1 text-center text-lg-left">
                 <a href="{% url 'welcome' %}" class="nav-link main-logo-link">
                     <h2 class="logo-font my-0"><strong>DROP</strong> R<i class="fa-solid fa-gem"></i>CKS</h2>
                 </a>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            <div class="col-12 col-lg-4 my-auto mb-lg-3 py-1">
                 <form method="GET" action="">
                     <div class="input-group w-100">
                         <input id="search-bar" class="form-control" type="text" name="q" placeholder="Search">
@@ -65,35 +65,43 @@
                     </div>
                 </form>
             </div>
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-flex justify-content-center justify-content-lg-end">
+                <ul class="list-inline list-unstyled text-lg-right my-0">
+                    {% if request.user.is_superuser %}
                     <li class="list-inline-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-solid fa-gears"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Add a product</a></li>
+                            <li><a class="dropdown-item" href="#">Add A Product</a></li>
                             <li><a class="dropdown-item" href="#">Manage Drops</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                     <li class="list-inline-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="fa-solid fa-user"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Sign In</a></li>
-                            <li><a class="dropdown-item" href="#">Sign Up</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item text-danger" href="#">Sign Out</a></li>
+                            {% else %}
+                            <li><a class="dropdown-item" href="#">Sign In</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-success" href="#">Sign Up</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                     <li class="list-inline-item">
-                        <a class="nav-link"
-                            href="">
+                        <a class="nav-link" href="">
                             <div class="text-center">
                                 <div><i class="fas fa-cart-shopping fa-lg"></i>
                                     {% if grand_total %}
@@ -108,6 +116,19 @@
                 </ul>
             </div>
         </div>
+        <nav>
+            <div class="row py-2 bg-light-green tx-dark" id="main-nav-links">
+                <div class="main-nav-link col-12 col-md-6 offset-lg-3 col-lg-2 text-center">
+                    <a class="main-nav-link tx-dark" href="#"><strong>Rings</strong></a>
+                </div>
+                <div class="main-nav-link col-12 col-md-6 col-lg-2 text-center">
+                    <a class="main-nav-link tx-dark" href="#"><strong>Cuffs</strong></a>
+                </div>
+                <div class="col-12 col-md-12 col-lg-2 text-center">
+                    <a class="main-nav-link tx-dark" href="#"><strong>Necklaces</strong></a>
+                </div>
+            </div>
+        </nav>
     </header>
 
     {% if messages %}
