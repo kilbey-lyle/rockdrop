@@ -3,7 +3,64 @@ html {
 }
 
 body {
-    background-image: url('media/background_image.jpg');
+    background-color: #F2EFE9;
     background-size: cover;
     height: calc(100vh - 164px);
+    font-family: "Roboto", serif;
+}
+
+/*------Colours ------*/
+/*-- Background --*/
+.bg-dark-green {
+    background-color: #26400D;
+}
+
+.bg-light-green {
+    background-color: #97BF5A;
+}
+
+.bg-white {
+    background-color: #F2EFE9;
+}
+
+.bg-dark {
+    background-color: #2D2D2D;
+}
+
+.bg-light-brown {
+    background-color: #BFAE9F;
+}
+
+/*-- text --*/
+
+.tx-dark-green {
+    color: #26400D;
+}
+
+.tx-light-green {
+    color: #97BF5A;
+}
+
+.tx-white {
+    color: #F2EFE9;
+}
+
+.tx-dark {
+    color: #2D2D2D;
+}
+
+.tx-light-brown {
+    color: #BFAE9F;
+}
+
+/*------ Header ------*/
+
+#search-bar {
+    border-radius: 5px;
+}
+
+#search-btn {
+    border: 2px solid #F2EFE9;
+    border-left: none;
+    border-top-left-radius: 0px;
 }
