@@ -19,10 +19,10 @@ As a user I would to...
 - Add item(s) I am interested in into a basket so I can purchase them once I have completed my shopping
 - have a user account so I can see my past orders, and save my delivery details
 - to see products by product type so I filter for what i am looking for
-- to be able to see all products which might be available in the future so I can plan what I am going to buy in the future
 - search for a specific product so I do not have to look at all products if i am searching for something specific
 - to get confirmation emails so I know my order was successful and have a copy of all order information
 - be able to check out without having a register account so I can make a one time purchase
+- to be able to see all products which might be available in the future so I can plan what I am going to buy in the future
 - have a quick add button so I can add an item to my basket without having to leave the all products page 
 
 As a site owner I would like to...
