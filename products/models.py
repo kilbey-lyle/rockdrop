@@ -2,7 +2,6 @@ from django.db import models
 
 CAT_CHOICES = {
     "RG": "Ring",
-    "CF": "Cuff",
     "NL": "Necklace",
 }
 
@@ -51,10 +50,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    stone_type = models.CharField(max_length=50, null=True, choices=STONE_CHOICES)
-    metal_type = models.CharField(max_length=50, null=True, choices=METAL_CHOICES)
-    chain_length = models.CharField(max_length=50, null=True, choices=CHAIN_LENGTH_CHOICES)
-    chain_thickness = models.CharField(max_length=50, null=True, choices=CHAIN_THICKNESS_CHOICES)
+    stone_type = models.CharField(max_length=50, null=True, blank=True, choices=STONE_CHOICES)
+    metal_type = models.CharField(max_length=50, null=True, blank=True, choices=METAL_CHOICES)
+    chain_length = models.CharField(max_length=50, null=True, blank=True, choices=CHAIN_LENGTH_CHOICES)
+    chain_thickness = models.CharField(max_length=50, null=True, blank=True, choices=CHAIN_THICKNESS_CHOICES)
     has_sizes = models.BooleanField(default=False)
     is_public = models.BooleanField(default=False)
 
