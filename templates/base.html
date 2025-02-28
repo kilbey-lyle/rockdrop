@@ -123,13 +123,13 @@
         <nav>
             <div class="row py-2 bg-light-green tx-dark" id="main-nav-links">
                 <div class="main-nav-link col-12 col-md-6 offset-lg-3 col-lg-2 text-center">
-                    <a class="main-nav-link tx-dark" href="#"><strong>Rings</strong></a>
+                    <a class="main-nav-link tx-dark" href="{% url 'products' %}?category=RG"><strong>Rings</strong></a>
                 </div>
                 <div class="main-nav-link col-12 col-md-6 col-lg-2 text-center">
-                    <a class="main-nav-link tx-dark" href="#"><strong>Cuffs</strong></a>
+                    <a class="main-nav-link tx-dark" href="{% url 'products' %}"><strong>All Products</strong></a>
                 </div>
-                <div class="col-12 col-md-12 col-lg-2 text-center">
-                    <a class="main-nav-link tx-dark" href="#"><strong>Necklaces</strong></a>
+                <div class="col-12 col-md-12 col-lg-2 text-center bg-dark-brown">
+                    <a class="main-nav-link tx-dark" href="{% url 'products' %}?category=NL"><strong>Necklaces</strong></a>
                 </div>
             </div>
         </nav>

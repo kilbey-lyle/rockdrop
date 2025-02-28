@@ -97,8 +97,32 @@ body {
 	z-index: -1;
 }
 
-/*------ product view ------*/
+/*------ products view ------*/
 
 .card-img-top {
     min-height: 200px;
+}
+
+#sort-selector {
+    border-radius: 6px;
+}
+
+.sort-active {
+    border: 4px solid #26400D;
+}
+
+/*------ product detail view ------*/
+
+.image-container {
+    width: 264px;
+}
+
+.image-container img {
+    border-radius: 6px;
+    border: 2px solid #26400D;
+    box-shadow: 3px 5px rgb(0,0,0,0.1);
+}
+
+#desc-label {
+    text-decoration: underline;
 }
