@@ -5,7 +5,7 @@
 <div class="overlay"></div>
 <div class="container header-container text-center">
     <div class="row">
-        <h1>{{ product.name }}</h1>
+        <h1>Product Details</h1>
         <hr>
     </div>
 </div>
@@ -27,7 +27,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="details-wrapper col-12 col-md-6 pt-4">
+        <div class="details-wrapper col-12 col-md-5 pt-4">
             <div class="row">
                 <div class="col-12 col-lg-9">
                     <h3 class="mb-0">{{ product.name }}</h3>
@@ -37,22 +37,51 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-lg-9">
-                    <p><strong>SKU: </strong>{{ product.sku }}</p>
+                <div class="col-12 col-md-8">
+                    <div class="row">
+                        <div class="col-9">
+                            <p><strong>SKU: </strong>{{ product.sku }}</p>
+                        </div>
+                        <div class="col-3">
+                            {% if product.category %}
+                            <p class="small mt-1 mb-0">
+                                <i class="fas fa-tag mr-1 text-muted"></i>
+                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category }}">
+                                    {{ product.get_category_display|capfirst }}
+                                </a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p id="desc-label"><strong>Description</strong></p>
+                            <p class="">{{ product.description }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-12 col-lg-3">
-                    {% if product.category %}
-                    <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'products' %}?category={{ product.category }}">
-                            <i class="fas fa-tag mr-1"></i> {{ product.get_category_display|capfirst }}
-                        </a>
-                    </p>
+                <div class="col-12 col-md-4 mt-4 text-center rounded-3 tx-white ml-5">
+                    {% if product.stone_type %}
+                    <div class="row">
+                        <p class="bg-dark-green rounded-4"><strong>Stone Type: </strong>{{ product.get_stone_type_display }}</p>
+                    </div>
+                    {% endif %}
+                    {% if product.metal_type %}
+                    <div class="row">
+                        <p class="bg-dark-green rounded-4"><strong>Metal Type: </strong>{{ product.get_metal_type_display }}</p>
+                    </div>
+                    {% endif %}
+                    {% if product.chain_length %}
+                    <div class="row">
+                        <p class="bg-dark-green rounded-4"><strong>Chain Length: </strong>{{ product.get_chain_length_display }}</p>
+                    </div>
+                    {% endif %}
+                    {% if product.chain_thickness %}
+                    <div class="row">
+                        <p class="bg-dark-green rounded-4"><strong>Chain Thickness: </strong>{{ product.get_chain_thickness_display }}</p>
+                    </div>
                     {% endif %}
                 </div>
-            </div>
-            <div class="row">
-                <p id="desc-label"><strong>Description</strong></p>
-                <p class="">{{ product.description }}</p>
             </div>
         </div>
     </div>
