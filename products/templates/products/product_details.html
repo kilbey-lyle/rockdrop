@@ -14,7 +14,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 offset-lg-2 d-flex justify-content-center">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
             <div class="image-container my-5">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
@@ -27,17 +27,15 @@
                 {% endif %}
             </div>
         </div>
-        <div class="details-wrapper col-12 col-md-5 pt-4">
+        <div class="col-12 col-md-4 pt-4">
             <div class="row">
                 <div class="col-12 col-lg-9">
                     <h3 class="mb-0">{{ product.name }}</h3>
-                </div>
-                <div class="col-12 col-lg-3">
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12">
                     <div class="row">
                         <div class="col-9">
                             <p><strong>SKU: </strong>{{ product.sku }}</p>
@@ -60,30 +58,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mt-4 text-center rounded-3 tx-white ml-5">
-                    {% if product.stone_type %}
-                    <div class="row">
-                        <p class="bg-dark-green rounded-4"><strong>Stone Type: </strong>{{ product.get_stone_type_display }}</p>
-                    </div>
-                    {% endif %}
-                    {% if product.metal_type %}
-                    <div class="row">
-                        <p class="bg-dark-green rounded-4"><strong>Metal Type: </strong>{{ product.get_metal_type_display }}</p>
-                    </div>
-                    {% endif %}
-                    {% if product.chain_length %}
-                    <div class="row">
-                        <p class="bg-dark-green rounded-4"><strong>Chain Length: </strong>{{ product.get_chain_length_display }}</p>
-                    </div>
-                    {% endif %}
-                    {% if product.chain_thickness %}
-                    <div class="row">
-                        <p class="bg-dark-green rounded-4"><strong>Chain Thickness: </strong>{{ product.get_chain_thickness_display }}</p>
-                    </div>
-                    {% endif %}
-                </div>
             </div>
         </div>
+        <div class="col-12 col-md-4 py-5 text-center rounded-3 tx-white ml-5">
+            {% if product.stone_type %}
+            <div class="row">
+                <p class="bg-dark-green rounded-4 product-details-label"><strong>Stone Type: </strong>{{ product.get_stone_type_display }}</p>
+            </div>
+            {% endif %}
+            {% if product.metal_type %}
+            <div class="row">
+                <p class="bg-dark-green rounded-4 product-details-label"><strong>Metal Type: </strong>{{ product.get_metal_type_display }}</p>
+            </div>
+            {% endif %}
+            {% if product.chain_length %}
+            <div class="row">
+                <p class="bg-dark-green rounded-4 product-details-label"><strong>Chain Length: </strong>{{ product.get_chain_length_display }}</p>
+            </div>
+            {% endif %}
+            {% if product.chain_thickness %}
+            <div class="row">
+                <p class="bg-dark-green rounded-4 product-details-label"><strong>Chain Thickness: </strong>{{ product.get_chain_thickness_display }}</p>
+            </div>
+            {% endif %}
+        </div>
+
     </div>
 </div>
 {% endblock %}

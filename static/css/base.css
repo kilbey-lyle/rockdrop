@@ -126,3 +126,9 @@ body {
 #desc-label {
     text-decoration: underline;
 }
+
+.product-details-label {
+    max-width: 200px;
+    margin: 0px auto;
+    margin-top: 15px;
+}
