@@ -79,6 +79,26 @@ body {
     border-radius: 5px;
 }
 
+/*------ header container push down ------*/
+
 .header-container {
     margin-top: 125px;
+}
+
+/*------ overlay ------*/
+
+.overlay {
+    height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: #F2EFE9;
+	z-index: -1;
+}
+
+/*------ product view ------*/
+
+.card-img-top {
+    min-height: 200px;
 }

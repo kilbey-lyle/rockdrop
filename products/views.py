@@ -6,7 +6,7 @@ from .models import Product
 def all_products(request):
     '''A view to show all products'''
 
-    products = Product.objects.all()
+    products = Product.objects.filter(is_public=True)
 
     context = {
         'products': products
