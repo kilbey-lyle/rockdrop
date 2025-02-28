@@ -10,7 +10,12 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'image',
-        'is_public'
+        'stone_type',
+        'metal_type',
+        'chain_length',
+        'chain_thickness',
+        'is_public',
+        'has_sizes',
     )
 
     ordering = ('-is_public', 'price')
