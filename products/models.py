@@ -54,7 +54,6 @@ class Product(models.Model):
     metal_type = models.CharField(max_length=50, null=True, blank=True, choices=METAL_CHOICES)
     chain_length = models.CharField(max_length=50, null=True, blank=True, choices=CHAIN_LENGTH_CHOICES)
     chain_thickness = models.CharField(max_length=50, null=True, blank=True, choices=CHAIN_THICKNESS_CHOICES)
-    has_sizes = models.BooleanField(default=False)
     is_public = models.BooleanField(default=False)
 
     def __str__(self):

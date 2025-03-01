@@ -15,7 +15,6 @@ class ProductAdmin(admin.ModelAdmin):
         'chain_length',
         'chain_thickness',
         'is_public',
-        'has_sizes',
     )
 
     ordering = ('-is_public', 'price')
