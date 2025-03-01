@@ -25,24 +25,40 @@
                 </tr>
             </thead>
             {% for item in cart_items %}
-                <tr>
-                    <td class="p-3 w-25">
-                        <img class="img-fluid rounded" src="{{ item.product.image.url }}">
-                    </td>
-                    <td class="py-3">
-                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
-                    </td>
-                    <td class="py-3">
-                        <p class="my-0">£{{ item.product.price }}</p>
-                    </td>
-                    <td class="py-3 w-25">
-                        <p class="my-0">{{ item.quantity }}</p>
-                    </td>
-                    <td class="py-3">
-                        <p class="my-0">£{{ item.product.price }}</p>
-                    </td>
-                </tr>
+            <tr>
+                <td class="p-3 w-25">
+                    <img class="img-fluid rounded" src="{{ item.product.image.url }}">
+                </td>
+                <td class="py-3">
+                    <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                    <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">£{{ item.product.price }}</p>
+                </td>
+                <td class="py-3 w-25">
+                    <label for="qty">Quantity: </label>
+                    <select name="qty" id="qty" form="qty-form">
+                        <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1</option>
+                        <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2</option>
+                        <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
+                        <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4</option>
+                        <option value="5" {% if item.quantity == 5 %}selected{% endif %}>5</option>
+                        <option value="1" {% if item.quantity == 6 %}selected{% endif %}>6</option>
+                        <option value="2" {% if item.quantity == 7 %}selected{% endif %}>7</option>
+                        <option value="3" {% if item.quantity == 8 %}selected{% endif %}>8</option>
+                        <option value="4" {% if item.quantity == 9 %}selected{% endif %}>9</option>
+                        <option value="5" {% if item.quantity == 10 %}selected{% endif %}>10</option>
+                    </select>
+                    <form id="qty-form" action="" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" class="btn text-uppercase bg-dark-green text-white mt-2" value="Update">
+                    </form>
+                </td>
+                <td class="py-3">
+                    <p class="my-0">£{{ item.product.price }}</p>
+                </td>
+            </tr>
             {% endfor %}
             <tr>
                 <td colspan="5" class="pt-5 text-right">
@@ -50,9 +66,10 @@
                     <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                     {% if free_delivery_delta > 0 %}
-                        <p class="mb-1 text-danger">
-                            You could get free delivery by spending just <strong>£{{ free_delivery_left_to_spend }}</strong> more!
-                        </p>
+                    <p class="mb-1 text-danger">
+                        You could get free delivery by spending just <strong>£{{ free_delivery_left_to_spend }}</strong>
+                        more!
+                    </p>
                     {% endif %}
                 </td>
             </tr>
