@@ -24,6 +24,12 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
     
     request.session['cart'] = cart
+
+    if quantity > 1:
+        messages.success(request, f"{quantity} items have been added to your cart.", extra_tags='add_to_cart')
+    else:
+        messages.success(request, "Item has been added to your cart.", extra_tags='add_to_cart')
+
     return redirect(redirect_url)
 
 def update_cart(request):
@@ -54,6 +60,8 @@ def add_single_item_to_cart(request, item_id):
         cart[item_id] = quantity
     
     request.session['cart'] = cart
+    messages.success(request, "Item has been added to your cart.", extra_tags='add_to_cart')
+
     return redirect(reverse('products'))
 
 def delete_an_item_from_cart(request, item_id):

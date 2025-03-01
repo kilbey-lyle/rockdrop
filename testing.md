@@ -13,3 +13,5 @@ wrapping of product name on smaller veiw on view products view
 even if no items in bag there was always a charge of if 15 pounds due to deliery so could not hide price by bag. Solve by adding an if total greater than 0 check in bag contect processer
 
 Only first item in shopping cart worked as select item was using the form value target with a static name so all selects elements where targeting the first form. Add item id to form nmae and form target attribute so each seelcts woudl target their onw form so a string not a num type was return to update cart view.
+
+add to basket button on rings or necklaces takes you back to all products
