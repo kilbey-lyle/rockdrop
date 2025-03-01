@@ -108,10 +108,8 @@
                         <a class="nav-link" href="{% url 'view_cart' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-cart-shopping fa-lg"></i>
-                                    {% if grand_total %}
-                                    ${{ grand_total|floatformat:2 }}
-                                    {% else %}
-                                    £0.00
+                                    {% if grand_total > 0 %}
+                                    £{{ grand_total|floatformat:2 }}
                                     {% endif %}
                                 </div>
                             </div>
@@ -129,7 +127,8 @@
                     <a class="main-nav-link tx-dark" href="{% url 'products' %}"><strong>All Products</strong></a>
                 </div>
                 <div class="col-12 col-md-12 col-lg-2 text-center bg-dark-brown">
-                    <a class="main-nav-link tx-dark" href="{% url 'products' %}?category=NL"><strong>Necklaces</strong></a>
+                    <a class="main-nav-link tx-dark"
+                        href="{% url 'products' %}?category=NL"><strong>Necklaces</strong></a>
                 </div>
             </div>
         </nav>

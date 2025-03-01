@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block sub_title %}
 <div class="overlay"></div>
@@ -44,19 +45,21 @@
                         <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
                         <option value="4" {% if item.quantity == 4 %}selected{% endif %}>4</option>
                         <option value="5" {% if item.quantity == 5 %}selected{% endif %}>5</option>
-                        <option value="1" {% if item.quantity == 6 %}selected{% endif %}>6</option>
-                        <option value="2" {% if item.quantity == 7 %}selected{% endif %}>7</option>
-                        <option value="3" {% if item.quantity == 8 %}selected{% endif %}>8</option>
-                        <option value="4" {% if item.quantity == 9 %}selected{% endif %}>9</option>
-                        <option value="5" {% if item.quantity == 10 %}selected{% endif %}>10</option>
+                        <option value="6" {% if item.quantity == 6 %}selected{% endif %}>6</option>
+                        <option value="7" {% if item.quantity == 7 %}selected{% endif %}>7</option>
+                        <option value="8" {% if item.quantity == 8 %}selected{% endif %}>8</option>
+                        <option value="9" {% if item.quantity == 9 %}selected{% endif %}>9</option>
+                        <option value="10" {% if item.quantity == 10 %}selected{% endif %}>10</option>
                     </select>
-                    <form id="qty-form" action="" method="POST">
+                    <form id="qty-form" action="{% url 'update_cart' %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" class="btn text-uppercase bg-dark-green text-white mt-2" value="Update">
+                        <input type="hidden" name="item_id" value="{{ item.item_id }}">
                     </form>
                 </td>
                 <td class="py-3">
-                    <p class="my-0">£{{ item.product.price }}</p>
+                    <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    <a href="{% url 'delete_an_item_from_cart' item.item_id %}" class="text-danger">Delete</a>
                 </td>
             </tr>
             {% endfor %}
@@ -65,7 +68,7 @@
                     <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
                     <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                    {% if free_delivery_delta > 0 %}
+                    {% if free_delivery_left_to_spend > 0 %}
                     <p class="mb-1 text-danger">
                         You could get free delivery by spending just <strong>£{{ free_delivery_left_to_spend }}</strong>
                         more!
