@@ -39,7 +39,7 @@
                 </td>
                 <td class="py-3 w-25">
                     <label for="qty">Quantity: </label>
-                    <select name="qty" id="qty" form="qty-form">
+                    <select name="qty" id="qty" form="{{ item.item_id }}-form">
                         <option value="1" {% if item.quantity == 1 %}selected{% endif %}>1</option>
                         <option value="2" {% if item.quantity == 2 %}selected{% endif %}>2</option>
                         <option value="3" {% if item.quantity == 3 %}selected{% endif %}>3</option>
@@ -51,9 +51,9 @@
                         <option value="9" {% if item.quantity == 9 %}selected{% endif %}>9</option>
                         <option value="10" {% if item.quantity == 10 %}selected{% endif %}>10</option>
                     </select>
-                    <form id="qty-form" action="{% url 'update_cart' %}" method="POST">
+                    <form id="{{ item.item_id }}-form" action="{% url 'update_cart' %}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" class="btn text-uppercase bg-dark-green text-white mt-2" value="Update">
+                        <input type="submit" class="btn btn-sm text-uppercase bg-dark-green text-white mt-2" value="Update">
                         <input type="hidden" name="item_id" value="{{ item.item_id }}">
                     </form>
                 </td>

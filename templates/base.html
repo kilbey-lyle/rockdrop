@@ -37,7 +37,6 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'js/js.js' %}"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -134,17 +133,39 @@
         </nav>
     </header>
 
-    {% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
-
     {% block sub_title %}
     {% endblock %}
+
+    {% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+          {% with message.level as level %}
+              {% if level == 40 %}
+                  {% include 'includes/toasts/toast_error.html' %}
+              {% elif level == 30 %}
+                  {% include 'includes/toasts/toast_warning.html' %}
+              {% elif level == 25 %}
+                  {% include 'includes/toasts/toast_success.html' %}
+              {% else %}
+                  {% include 'includes/toasts/toast_info.html' %}
+              {% endif %}
+          {% endwith %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+
 
     {% block content %}
     {% endblock %}
 
     {% block postload_js %}
+        <script type="text/javascript">
+            $('.toast').show();
+            $('#toast-close').click((e) => {
+                $('.toast').hide();
+            })
+        </script>
     {% endblock %}
 </body>
 

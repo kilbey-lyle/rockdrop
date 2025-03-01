@@ -132,3 +132,35 @@ body {
     margin: 0px auto;
     margin-top: 15px;
 }
+
+/*------ toasts ------*/
+
+
+.message-container {
+    position: fixed;
+    bottom: 0px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+.toast-header {
+    font-weight: 800;
+    font-size: large;
+}
+
+#toast-close {
+    font-size: 20px;
+    margin-left: 240px;
+}
+
+#toast-close:hover {
+    cursor: pointer;
+}

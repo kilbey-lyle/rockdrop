@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.urls import reverse
 
 
@@ -28,17 +29,16 @@ def add_to_cart(request, item_id):
 def update_cart(request):
     """update an item qty in cart"""
 
+    print(request.POST.get('qty'))
     cart = request.session.get('cart')
-    new_qty = int(request.POST.get('qty'))
     item_id = request.POST.get('item_id')
-    print(f'Item Id: {item_id}')
-    print(f'Qty: {new_qty}')
+    new_qty = int(request.POST.get('qty'))
 
     cart[item_id] = new_qty
 
     request.session['cart'] = cart
-    print(request.session['cart'])
 
+    messages.success(request, f'Quantity updated to {new_qty}')
     return redirect(reverse('view_cart'))
 
 def add_single_item_to_cart(request, item_id):
