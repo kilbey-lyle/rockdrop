@@ -6,26 +6,7 @@ from products.models import Product
 import stripe
 
 # Create your views here.
-
-def checkout(request):
-    cart = request.session.get('cart', {})
-    if not cart:
-        messages.error(request, "There's nothing in your cart at the moment")
-        return redirect(reverse('products'))
-    
-    order_form = OrderForm()
-    template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-    }
-
-    return render(request, template, context)
-
-
 def create_checkout_session(request):
-
-    print(settings.STRIPE_SECRET_KEY)
-    stripe.api_key = settings.STRIPE_SECRET_KEY
 
     cart = request.session.get('cart', {})
     line_items = []
@@ -46,7 +27,7 @@ def create_checkout_session(request):
     session = stripe.checkout.Session.create(
     line_items=line_items,
     mode='payment',
-    success_url='http://localhost:4242/success',
+    success_url='http://127.0.0.1:8000/',
     cancel_url='http://localhost:4242/cancel',
     shipping_address_collection = {"allowed_countries": [ "GB", "IE"]},
     )
