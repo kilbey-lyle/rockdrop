@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block sub_title %}
+<div class="overlay"></div>
+<div class="container header-container text-center">
+    <div class="row">
+        <div class="col">
+            <h1>Order Confirmed.</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container content-container">
+    <div class="row">
+        <h2>Thank you for your order</h2>
+        <p>An confirmation has been sent to {{ order.email }}. Thank you for supporting drop rocks!</p>
+        <h3>Order Details</h3>
+        <hr>
+        <div class="col-12 col-lg-6">
+            <h5>Shipping Details</h5>
+            <div class="row">
+                <p><strong>Name: </strong>{{ shipping_info.name }}</p>
+            </div>
+            <div class="row">
+                <p><strong>Order number: </strong>{{ order.order_number }}</p>
+            </div>
+            <div class="row">
+                <p><strong>Address Line 1: </strong>{{ shipping_info.address.line1 }}</p>
+            </div>
+            {% if shipping_info.address.line2 %}
+            <div class="row">
+                <p><strong>Address Line 2: </strong>{{ shipping_info.address.line2 }}</p>
+            </div>
+            {% endif %}
+            {% if shipping_info.address.city %}
+            <div class="row">
+                <p><strong>City/Town: </strong>{{ shipping_info.address.city }}</p>
+            </div>
+            {% endif %}
+            {% if shipping_info.address.state %}
+            <div class="row">
+                <p><strong>County: </strong>{{ shipping_info.address.state }}</p>
+            </div>
+            {% endif %}
+            {% if shipping_info.address.country %}
+            <div class="row">
+                <p>
+                    <strong>Country: </strong>
+                    {% if shipping_info.address.country == 'GB'%}
+                    United Kingdom
+                    {% else %}
+                    Ireland
+                    {% endif %}
+                </p>
+            </div>
+            {% endif %}
+            <div class="row">
+                <p><strong>Postcode: </strong>{{ shipping_info.address.postal_code }}</p>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="row">
+                <h5>Product Details</h5>
+            </div>
+            {% for item in order.lineitems.all %}
+            <div class="row">
+                <div class="col-12 col-md-7 text-end">
+                    <p class="mb-0">
+                        {{ item.product.name }}
+                    </p>
+                    <p class="small mb-0">
+                        {{ item.quantity }} @ £{{ item.product.price }} each
+                    </p>
+                </div>
+                <div class="col-12 col-md-4">
+                    {% if item.product.image %}
+                    <img class="img-small" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {% else %}
+                    <img class="img-small" src="{{ MEDIA_URL }}noimage.png" alt="{{item.product.name }}">
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
