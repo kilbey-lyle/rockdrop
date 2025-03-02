@@ -66,7 +66,7 @@ def create_checkout_session(request):
         metadata={"cart_contents": json.dumps(cart)},
     )
 
-    print(session.id)
+    del request.session['cart']
 
     return redirect(session.url, code=303)
 
