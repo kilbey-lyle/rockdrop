@@ -17,3 +17,5 @@ Only first item in shopping cart worked as select item was using the form value 
 add to basket button on rings or necklaces takes you back to all products
 
 sort drop down is broken on roduct view
+
+different padding on toats fpor close button

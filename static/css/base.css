@@ -165,4 +165,8 @@ body {
     cursor: pointer;
 }
 
-/*------ Checkout ------*/
+/*------ AllAuth------*/
+
+#pick-me {
+    color: red;
+}

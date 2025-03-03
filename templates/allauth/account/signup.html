@@ -2,12 +2,17 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block sub_title %}
+<div class="overlay"></div>
+<div class="container header-container text-center">
+    <div class="row">
+        <h1>Sign Up</h1>
+        <hr>
+    </div>
+</div>
+{% endblock %}
 
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign Up" %}</h2>
-<hr>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
@@ -17,8 +22,8 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="btn btn-outline-black rounded-0" href="{% url 'account_login' %}">Back to Login</a>
-  <button type="submit">{% trans "Sign Up" %}</button>
+  <a class="btn btn-sm bg-light-green text-dark fw-bold mt-4" href="{% url 'account_login' %}">Back to Login</a>
+  <button class="btn btn-sm bg-dark-green text-white mt-4" type="submit">{% trans "Sign Up" %}</button>
 </form>
 
 {% endblock %}

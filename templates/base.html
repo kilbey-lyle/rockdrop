@@ -93,13 +93,13 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#">Sign Out</a></li>
+                            <li><a class="dropdown-item text-danger" href="{% url 'account_logout' %}">Sign Out</a></li>
                             {% else %}
-                            <li><a class="dropdown-item" href="#">Sign In</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_login' %}">Sign In</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-success" href="#">Sign Up</a></li>
+                            <li><a class="dropdown-item text-success" href="{% url 'account_signup' %}">Sign Up</a></li>
                             {% endif %}
                         </ul>
                     </li>

@@ -2,12 +2,18 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block sub_title %}
+<div class="overlay"></div>
+<div class="container header-container text-center">
+    <div class="row">
+        <h1>Sign Up closed</h1>
+        <hr>
+    </div>
+</div>
+{% endblock %}
 
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign Up Closed" %}</h2>
-<hr>
+
 
 <p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
 {% endblock %}
