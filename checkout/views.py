@@ -4,6 +4,7 @@ from checkout.models import Order, OrderLineItem
 from django.conf import settings
 from products.models import Product
 from cart.contexts import cart_contents
+from profiles.models import UserProfile
 import json
 import stripe
 
@@ -12,6 +13,7 @@ def create_checkout_session(request):
 
     cart = request.session.get('cart', {})
     line_items = []
+    user = request.user
 
 
     if not settings.STRIPE_SECRET_KEY:
@@ -65,7 +67,8 @@ def create_checkout_session(request):
     stripe.checkout.Session.modify( 
         session.id,
         metadata={
-            "cart_contents": json.dumps(cart)
+            "cart_contents": json.dumps(cart),
+            "user" : user
             },
         )
 
@@ -79,10 +82,16 @@ def checkout_success(request):
     session = stripe.checkout.Session.retrieve(session_id)
 
     shipping_info = session.shipping_details
+    user = session.metadata.user
+
 
     if Order.objects.filter(stripe_id=session.id):
         order = Order.objects.get(stripe_id=session.id)
     else:
+
+        cart = json.loads(session.metadata.cart_contents)
+        order_placed_by = UserProfile.objects.get(user__username=user)
+
         order = Order(
             full_name = session.customer_details.name,
             email = session.customer_details.email,
@@ -93,12 +102,10 @@ def checkout_success(request):
             postcode = session.shipping_details.address.postal_code, 
             country = session.shipping_details.address.country,
             county = session.shipping_details.address.state,
-            stripe_id = session.id
+            stripe_id = session.id,
+            user_profile = order_placed_by,
         )
         order.save()
-
-        cart = json.loads(session.metadata.cart_contents)
-
 
         for item_id, quantity in cart.items():
             product = Product.objects.get(id=item_id)

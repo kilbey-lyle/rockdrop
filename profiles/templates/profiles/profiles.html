@@ -2,25 +2,28 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
 {% endblock %}
 
 {% block sub_title %}
 <div class="overlay"></div>
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
+<div class="container header-container text-center">
+    <div class="row">
+        <div class="col">
+            <h1>All Products</h1>
+            <hr>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
-                <hr>
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        {{ user }}
+        {% for order in orders%}
+            {{ order.order_number }}
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
