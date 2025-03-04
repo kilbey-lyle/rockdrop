@@ -61,46 +61,53 @@ def create_checkout_session(request):
         phone_number_collection = {"enabled": True}
         )
 
+    
     stripe.checkout.Session.modify( 
         session.id,
-        metadata={"cart_contents": json.dumps(cart)},
-    )
+        metadata={
+            "cart_contents": json.dumps(cart)
+            },
+        )
 
     del request.session['cart']
 
     return redirect(session.url, code=303)
 
 def checkout_success(request):
+
     session_id = request.GET.get('session_id')
     session = stripe.checkout.Session.retrieve(session_id)
 
     shipping_info = session.shipping_details
 
-
-    order = Order(
-        full_name = session.customer_details.name,
-        email = session.customer_details.email,
-        phone_number = session.customer_details.phone,
-        street_address1 = session.shipping_details.address.line1,
-        street_address2 = session.shipping_details.address.line2,
-        town_or_city = session.shipping_details.address.city,
-        postcode = session.shipping_details.address.postal_code, 
-        country = session.shipping_details.address.country,
-        county = session.shipping_details.address.state,
-    )
-    order.save()
-
-    cart = json.loads(session.metadata.cart_contents)
-
-
-    for item_id, quantity in cart.items():
-        product = Product.objects.get(id=item_id)
-        order_line_item = OrderLineItem(
-            order=order,
-            product=product,
-            quantity=quantity
+    if Order.objects.filter(stripe_id=session.id):
+        order = Order.objects.get(stripe_id=session.id)
+    else:
+        order = Order(
+            full_name = session.customer_details.name,
+            email = session.customer_details.email,
+            phone_number = session.customer_details.phone,
+            street_address1 = session.shipping_details.address.line1,
+            street_address2 = session.shipping_details.address.line2,
+            town_or_city = session.shipping_details.address.city,
+            postcode = session.shipping_details.address.postal_code, 
+            country = session.shipping_details.address.country,
+            county = session.shipping_details.address.state,
+            stripe_id = session.id
         )
-        order_line_item.save()
+        order.save()
+
+        cart = json.loads(session.metadata.cart_contents)
+
+
+        for item_id, quantity in cart.items():
+            product = Product.objects.get(id=item_id)
+            order_line_item = OrderLineItem(
+                order=order,
+                product=product,
+                quantity=quantity
+            )
+            order_line_item.save()
 
     context = {
         'shipping_info': shipping_info,

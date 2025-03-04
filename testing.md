@@ -19,3 +19,7 @@ add to basket button on rings or necklaces takes you back to all products
 sort drop down is broken on roduct view
 
 different padding on toats fpor close button
+
+trying to checkout wityh an empty bag
+
+refreshing check out success page placed addtional duplicate orders
